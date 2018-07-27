@@ -11,6 +11,9 @@ const devServer = {
         errors: true
     },
     hot: true,
+    historyApiFallback: {
+      index: '/index.html'
+    },
 };
 
 const config = merge(baseConfig,{
@@ -26,7 +29,7 @@ const config = merge(baseConfig,{
     devServer,
     plugins: [
         new HtmlWebpackPlugin({
-            template: "../webpackConfig/client/template.html"
+            template: path.join(__dirname,"../client/template.html")
         }),
         new webpack.HotModuleReplacementPlugin(),
     ]

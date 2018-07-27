@@ -6,8 +6,9 @@ const config = {
     mode: "development",
     entry: path.join(__dirname, "../client/index.js"),
     output: {
-        filename: "[name].js",
-        path: path.join(__dirname, "../dist")
+      filename: "[name].js",
+      path: path.join(__dirname, "../dist"),
+      publicPath: '/'
     },
     module: {
         rules: [
@@ -23,12 +24,12 @@ const config = {
             },
             {
                 test: /\.js$/,
-                exclude: path.join(__dirname, "../node_modules"),
-                use: ["babel-loader"],
+                exclude: /node_modules/,
+                use: "babel-loader",
 
             },
             {
-                test: /\.(png|jpg|jpeg|gif|svg|bmp)$/,
+                test: /\.(png|jpe?g|gif|svg|bmp)$/,
                 use: [
                     {
                         loader: "url-loader",
